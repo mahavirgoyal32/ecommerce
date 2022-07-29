@@ -1,12 +1,33 @@
 console.log("hello world");
 // (print)
+
+
 const express = require('express');
-// import package express
+const authRouter = require('./routes/auth');
+
+const mongoose= require('mongoose');
+
 const PORT = 3000;
 
 const app = express();
 
-// creating an API
+const DB = "mongodb+srv://mahavir:findi123@cluster0.b2awd.mongodb.net/?retryWrites=true&w=majority";
+
+
+app.use(express.json());
+app.use(authRouter);
+
+
+
+// connections
+
+mongoose.connect(DB).then(()=>{
+console.log('connection successfull');   
+}).catch(
+    e=>{
+        console.log(e);
+    }
+);
 
 
 app.listen(PORT, "0.0.0.0", ()=>    {

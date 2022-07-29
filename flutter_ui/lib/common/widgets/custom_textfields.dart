@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, body_might_complete_normally_nullable
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -21,7 +21,12 @@ class CustomTextField extends StatelessWidget {
               borderSide: BorderSide(color: Colors.black)),
           enabledBorder: const OutlineInputBorder(
               borderSide: BorderSide(color: Colors.black))),
-      validator: (val) {},
+      validator: (val) {
+        if (val == null || val.isEmpty) {
+          return 'Enter your $hintText';
+        }
+        return null;
+      },
     );
   }
 }
