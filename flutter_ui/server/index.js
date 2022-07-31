@@ -6,6 +6,7 @@ const express = require('express');
 const authRouter = require('./routes/auth');
 
 const mongoose= require('mongoose');
+const adminRouter = require('./routes/admin');
 
 const PORT = 3000;
 
@@ -16,6 +17,8 @@ const DB = "mongodb+srv://mahavir:findi123@cluster0.b2awd.mongodb.net/?retryWrit
 
 app.use(express.json());
 app.use(authRouter);
+app.use(adminRouter);
+
 
 
 
