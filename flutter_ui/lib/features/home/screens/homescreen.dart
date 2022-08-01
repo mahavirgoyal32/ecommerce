@@ -3,6 +3,7 @@ import 'package:flutter_ui/features/home/widgets/address_box.dart';
 import 'package:flutter_ui/features/home/widgets/caraousel_image.dart';
 import 'package:flutter_ui/features/home/widgets/deal_of_day.dart';
 import 'package:flutter_ui/features/home/widgets/top_categories.dart';
+import 'package:flutter_ui/features/search/screens/search_screen.dart';
 
 import '../../../constants/global_variables.dart';
 
@@ -15,6 +16,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  void navigateToSearchScreen(String query) {
+    Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Material(
                           borderRadius: BorderRadius.circular(7),
                           elevation: 1,
-                          child: TextField(
+                          child: TextFormField(
+                            onFieldSubmitted: navigateToSearchScreen,
                             decoration: InputDecoration(
                               prefixIcon: InkWell(
                                 onTap: () {},
